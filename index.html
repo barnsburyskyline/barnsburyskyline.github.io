@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barnsbury Skyline</title>
+<meta name="description" content="A mobile phone base station is planned for the roof of Barnes Court, Lofting Road, in the Barnsbury Conservation Area. What's proposed, how it's been handled, and what you can do.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a residents' campaign sheet: direct, factual, every claim sourced.
+   IDEA: the flyers through the door, grown into a page: same headline type, same red and green.
+   PICTURE: the operators' own drawing and our illustration of the masts over Barnsbury roofs.
+   COLOUR and TYPE: paper ground, near-black ink, red for Barnes Court, green for neighbours; Archivo Black over Inter.
+   LAYOUT: one page, two doors at the top, each door's story, then the shared evidence. */
+:root{color-scheme:light dark;--bg:light-dark(#FBF8F1,#151413);--ink:light-dark(#141413,#F3EFE6);--muted:light-dark(#4a4844,#c9c4b8);--rule:light-dark(#141413,#F3EFE6);--card:light-dark(#ffffff,#1f1e1c);--red:light-dark(#C42A10,#ff7a5c);--green:light-dark(#1F6B3A,#6fcf8f);--black:#141413;--paper:#FBF8F1}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:16px;scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+.wrap{max-width:1080px;margin:0 auto;padding:0 max(5vw,16px)}
+.band{padding:clamp(32px,5vw,64px) 0}
+h1,h2,h3{font-family:'Archivo Black',Inter,sans-serif;font-weight:400;line-height:1.05;text-wrap:balance;margin:0 0 .5em}
+h1{font-size:clamp(34px,5.5vw,64px);text-transform:uppercase;margin-bottom:24px}
+h2{font-size:clamp(28px,4vw,44px);text-transform:uppercase}
+h3{font-size:22px;text-transform:uppercase}
+p{margin:0 0 1em;max-width:68ch}
+a{color:inherit}
+.top{border-bottom:3px solid var(--rule)}
+.brand{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 0;font-weight:700}
+.brand b{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:20px;text-transform:uppercase}
+.status{font-size:14px;color:var(--muted)}
+.hero{display:grid;grid-template-columns:minmax(0,0.7fr) minmax(0,1.3fr);gap:clamp(20px,3vw,40px);align-items:center}
+.hero img{width:100%;aspect-ratio:410/340;object-fit:cover;border:3px solid var(--rule);display:block}
+.cap{font-size:13px;color:var(--muted);margin-top:6px}
+.lede{background:var(--black);color:var(--paper);padding:16px 18px;font-weight:600;font-size:18px;margin:0;max-width:none}
+.doors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.door{display:flex;flex-direction:column;justify-content:center;min-height:88px;padding:14px 18px;text-decoration:none;color:#fff;font-family:'Archivo Black',sans-serif;font-size:20px;text-transform:uppercase;line-height:1.1}
+.door small{font-family:Inter,sans-serif;font-size:14px;text-transform:none;font-weight:600;margin-top:4px}
+.door.r{background:#C42A10}.door.g{background:#1F6B3A}
+.door:focus-visible,.btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+.tab{appearance:none;border:0;cursor:pointer;min-height:56px;padding:12px 16px;font:400 18px/1.1 'Archivo Black',sans-serif;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--card);color:var(--ink);border:3px solid var(--rule);border-bottom:0}
+.tab+.tab{border-left:0}
+.tab[aria-selected=true].r{background:#C42A10;color:#fff}.tab[aria-selected=true].g{background:#1F6B3A;color:#fff}
+.tab:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.panel[hidden]{display:none}
+.sec-r{border-top:0}.sec-g{border-top:0}
+.tag{display:inline-block;font-weight:700;font-size:14px;padding:4px 10px;color:#fff;margin-bottom:12px}
+.tag.r{background:#C42A10}.tag.g{background:#1F6B3A}
+.points{list-style:none;padding:0;margin:0 0 24px;border-top:2px solid var(--rule)}
+.points li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:8px;padding:14px 0;border-bottom:2px solid var(--rule)}
+.points .n{font-family:'Archivo Black',sans-serif;font-size:28px;line-height:1}
+.sec-r .n{color:var(--red)}.sec-g .n{color:var(--green)}
+.points h3{margin:0 0 4px;font-size:20px}
+.points p{margin:0}
+.demand{border:3px solid var(--rule);background:var(--card);padding:16px 20px;margin:0 0 24px}
+.demand ol{margin:0;padding-left:1.3em}.demand li{margin:4px 0}
+.act{border:3px solid currentColor;padding:18px 20px}.sec-r .act{border-color:#C42A10}.sec-g .act{border-color:#1F6B3A}
+.sec-r .act{color:var(--red)}.sec-g .act{color:var(--green)}
+.act>*{color:var(--ink)}.act h3{color:inherit}
+.contacts{list-style:none;padding:0;margin:8px 0 12px;display:grid;gap:6px}
+.contacts li{display:flex;flex-wrap:wrap;gap:4px 12px}
+.contacts a{font-weight:700;overflow-wrap:anywhere}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,40px);align-items:start}
+details.more{border-top:3px solid var(--rule)}
+details.more:last-of-type{border-bottom:3px solid var(--rule)}
+details.more>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 44px;gap:12px;align-items:center;padding:20px 0;min-height:44px}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary h2{margin:0 0 6px;font-size:clamp(22px,3vw,32px)}
+details.more>summary p{margin:0;color:var(--muted)}
+details.more>summary::after{content:"+";font:400 36px/1 'Archivo Black',sans-serif;justify-self:end}
+details.more[open]>summary::after{content:"\2212"}
+details.more>summary:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.body{padding:0 0 28px}
+.body h3{margin:20px 0 8px;font-size:18px}
+.body ul,.body ol{margin:0 0 1em;padding-left:1.2em;max-width:70ch}.body li{margin:4px 0}
+.vp{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px 24px}
+.vp li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:8px;margin:0}
+.vp b.k{display:inline-flex;width:26px;height:26px;border-radius:50%;background:#1d3557;color:#fff;align-items:center;justify-content:center;font-size:13px}
+.docs{list-style:none;padding:0;margin:16px 0 0}.docs li{padding:10px 0;border-bottom:1px solid var(--rule)}
+figure{margin:0}
+figure img{width:100%;border:3px solid var(--rule);display:block;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:10px 8px;border-bottom:1px solid var(--rule)}
+th{font-size:13px;text-transform:none}
+td:first-child{white-space:nowrap;font-weight:700}
+blockquote{margin:0;font-weight:600}
+.quotepair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 24px}
+.quotepair div{background:var(--card);border:2px solid var(--rule);padding:14px 16px}
+.quotepair small{display:block;color:var(--muted);font-size:13px;margin-top:6px}
+.note{font-size:14px;color:var(--muted)}
+footer{border-top:3px solid var(--rule);padding:24px 0 40px;font-size:14px;color:var(--muted)}
+@media(max-width:700px){.hero,.two,.quotepair,.doors{grid-template-columns:minmax(0,1fr)}.hero figure{order:-1}.hero .lede{order:1}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:7em;white-space:normal}.stack td::before{content:attr(data-l);float:inline-start;width:6.5em;margin-inline-start:-7em;font-weight:700}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap brand"><b>Barnsbury Skyline</b><span class="status">Updated 27 November 2026</span></div></header>
+
+<section class="band"><div class="wrap">
+<h1>A phone mast on the Barnsbury skyline?</h1>
+<div class="hero">
+<p class="lede">Telent, working for EE and Three, wants to put a large mobile phone base station on the roof of Barnes Court, Lofting Road: directly above people's bedrooms, in the heart of the Barnsbury Conservation Area.</p>
+<figure><img src="mockup.jpg" alt="Illustration of the proposed mobile phone masts rising above the rooftops of Barnsbury houses"><figcaption class="cap">Our illustration, based on the operators' own drawings.</figcaption></figure>
+</div>
+</div></section>
+
+<section id="detail" class="band" style="border-top:3px solid var(--rule)"><div class="wrap">
+<h2>Dig deeper</h2>
+<p>Everything we've found so far, with where it comes from.</p>
+
+<details class="more" id="looks">
+<summary><div><h2>What it would look like, and who would see it</h2><p>Steel frames and antennas 4.3m above the roof, in view across the conservation area.</p></div></summary>
+<div class="body two">
+<div>
+<h3>What they want to build</h3>
+<p>From the operators' own drawings (dated 4 September 2026):</p>
+<ul>
+<li>Two freestanding antenna frames on the main roof, one at the north end and one near the middle</li>
+<li>4 antennas, 16 radio units and 2 dishes (600mm)</li>
+<li>A steel platform carrying 4 equipment cabinets, plus GPS posts and a cable tray across the roof</li>
+<li>A new 1.1m railing around the roof edge</li>
+<li>A new caged ladder up the outside of the building, from ground to roof</li>
+</ul>
+<h3>How high</h3>
+<p>The roof is at 14.5m. The antenna tops would reach <b>18.8m</b>, 4.3m above it. Using Environment Agency height data (surveyed 2018–20), that is about <b>4–5m above every roofline within roughly 250m</b>. Two houses on Barnsbury Square have since added a storey, which narrows the gap on that side.</p>
+<h3>What it sits among</h3>
+<p>Barnes Court is in the <b>Barnsbury Conservation Area</b>, about 300m inside its boundary. The houses directly behind the equipment, <b>7–11 Barnsbury Square, are locally listed</b>. <b>West Lodge</b> (Grade II listed) is 41m away. 1–4 Mountfort Terrace, Mountford House and 27–28 Barnsbury Square, all Grade II, are within about 100m. Around 60 listed buildings lie within 250m.</p>
+<p>The operators' drawings show one view, from the east, comparing the block with a 9m house. None shows the view from Barnsbury Square.</p>
+</div>
+<div>
+<figure><img src="viewpoints-map.jpg" alt="Map of Barnes Court and Barnsbury Square showing the proposed antenna frames, listed and locally listed buildings, and nine numbered viewpoints with lines of sight"><figcaption class="cap">Where it would be seen from. Numbered viewpoints with lines of sight, from our analysis of the height data: indicative, to be confirmed by photographs. Map © OpenStreetMap contributors; listed buildings from Historic England; locally listed buildings from Islington Council.</figcaption></figure>
+<ol class="vp">
+<li><b class="k">1</b><span>Barnsbury Square, by West Lodge · 46m · <i>visible even in summer</i></span></li>
+<li><b class="k">2</b><span>Barnsbury Square, north-west corner, across the garden · 90m · <i>mostly winter</i></span></li>
+<li><b class="k">3</b><span>Mountfort Terrace (listed) · 64m · <i>winter</i></span></li>
+<li><b class="k">4</b><span>Lofting Road at the Barnes Court entrance · 45m · <i>summer</i></span></li>
+<li><b class="k">5</b><span>Lofting Road by Thornhill Primary School · 70m · <i>winter</i></span></li>
+<li><b class="k">6</b><span>Brayfield Terrace (locally listed) · 68m · <i>summer</i></span></li>
+<li><b class="k">7</b><span>Thornhill Road, across the square · 100m · <i>winter</i></span></li>
+<li><b class="k">8</b><span>Barnes Court estate road · 13m · <i>summer</i></span></li>
+<li><b class="k">9</b><span>Mountfort Crescent · 117m · <i>mostly winter</i></span></li>
+</ol>
+</div>
+</div>
+</details>
+
+<details class="more" id="consultation">
+<summary><div><h2>What's wrong with the "consultation"</h2><p>A notice of a decision already made, with figures that don't add up.</p></div></summary>
+<div class="body">
+<div class="quotepair">
+<div><blockquote>"We currently have a radio base station located at 9-17 St Albans Place… which is being lost from the network."</blockquote><small>Letter to residents, 27 October. Repeated by email, 13 November.</small></div>
+<div><blockquote>"The St Albans Place infrastructure… has since been decommissioned."</blockquote><small>Email from Telent, 24 November. No date given.</small></div>
+</div>
+<h3>It was a notice, not a consultation</h3>
+<ul>
+<li>Telent says in writing this is "not a formal consultation process" and that there is "no requirement for the operators to notify residents" at all.</li>
+<li>On 13 November a resident recorded in writing that Telent had told him 30 sites were considered and the decision to apply had already been made. Telent has not disputed this.</li>
+<li>One letter, 14 days to reply, and no drawings. The drawings came only after a resident asked.</li>
+<li>Telent was asked to post the full details to every Barnes Court resident. It hasn't.</li>
+</ul>
+<h3>The figures don't add up</h3>
+<ul>
+<li><b>Antennas:</b> the letter says 6. The drawings show 4.</li>
+<li><b>Height:</b> Telent's email says the equipment rises 3.9m above the roof. Its own drawings show 4.3m.</li>
+<li><b>Plant room:</b> the email gives it as 2.9m tall. That's a chimney; the drawings show the plant room at 2.13m.</li>
+<li><b>Dish:</b> the formal description, twice, says a "600m diameter dish".</li>
+</ul>
+<h3>What was left out</h3>
+<ul>
+<li>No mention, anywhere in the letter, the emails or the drawings, that Barnes Court is in a conservation area.</li>
+<li>No mention of the new railing around the roof edge or the caged ladder up the outside of the building.</li>
+<li>No view from Barnsbury Square or the listed buildings around it.</li>
+<li>No answer on whether Islington, as freeholder, has agreed anything.</li>
+</ul>
+<h3>Mixed messages</h3>
+<ul>
+<li><b>Urgency:</b> the old site had to be replaced "at the earliest opportunity". It has already been decommissioned, and they won't say when.</li>
+<li><b>Noise:</b> in writing, the structures "do not emit noise". On the phone, residents were told there would be more noise in windy weather.</li>
+<li><b>Alternatives:</b> 30 sites on the phone; "a number of alternative sites" by email on 13 November; "several attempts with other sites" on 24 November. Barnes Court is "the most viable site". That is not the same as the least harmful.</li>
+</ul>
+</div>
+</details>
+
+<details class="more" id="questions">
+<summary><div><h2>The questions Telent hasn't answered</h2><p>We've asked. These are still open.</p></div></summary>
+<div class="body two">
+<div>
+<h3>The old site</h3>
+<ul>
+<li>When was St Albans Place switched off, and when was the notice to quit served?</li>
+<li>What has served the area since?</li>
+<li>Is Barnes Court a like-for-like replacement in capacity? (Asked 14 November.)</li>
+</ul>
+<h3>Why here?</h3>
+<ul>
+<li>Which sites were considered, and why was each rejected?</li>
+<li>Which landlords were approached, including the owners of the rebuilt St Albans Place roof?</li>
+<li>Barnes Court is about 680m from the old site, while several taller buildings stand within 300m of it. Why go so far?</li>
+<li>Was Barnes Court chosen because Islington owns it?</li>
+</ul>
+<h3>The council</h3>
+<ul>
+<li>Has Islington, as freeholder, been approached? Does any agreement exist? Who is the contact? (Asked 13 November, unanswered.)</li>
+<li>Has Telent had pre-application advice from Islington planning?</li>
+</ul>
+</div>
+<div>
+<h3>Living under it</h3>
+<ul>
+<li>Which is it on noise: none, or more in wind? What assessment covers the cabinets, with bedrooms directly below?</li>
+<li>Where will the power come from? Can a 1960s supply take the load, and who pays for any upgrade?</li>
+<li>What structural assessment of the roof has been done?</li>
+<li>How will scaffolding, cranes and access work, for how long, and who answers for damage and disturbance?</li>
+<li>Who inspects and maintains it, and how often will engineers need access?</li>
+</ul>
+<h3>The equipment</h3>
+<ul>
+<li>6 antennas or 4? 3.9m or 4.3m?</li>
+<li>Is it 4G, 5G or both?</li>
+<li>Will every resident, leaseholders included, get the full details? (Asked 13 November.)</li>
+</ul>
+</div>
+</div>
+</details>
+
+<details class="more" id="decision">
+<summary><div><h2>How the decision gets made</h2><p>Islington decides, twice. Here's how, and when you can have your say.</p></div></summary>
+<div class="body two">
+<div>
+<h3>Two possible routes</h3>
+<p><b>The fast route.</b> Telent says the scheme is "permitted development". On that route the council can look only at siting and appearance, and has 56 days to decide. If it hasn't decided by then, the operator can go ahead.</p>
+<p><b>Full planning permission.</b> A full application, assessed in the round, with proper consultation and no automatic approval by deadline. This is what we are asking for.</p>
+<h3>Islington's two roles</h3>
+<p>Islington Council is the <b>planning authority</b> that decides the application. It is also the <b>freeholder</b> of Barnes Court, the landlord any operator must deal with for the roof. Our councillors and MP can press it on both.</p>
+</div>
+<div>
+<h3>What counts in planning</h3>
+<ul>
+<li>How it looks, and its effect on the conservation area and on the setting of listed buildings</li>
+<li>Its effect on neighbours: outlook, noise, disturbance</li>
+<li>Whether better sites were properly looked for</li>
+</ul>
+<p><b>Health.</b> National planning rules treat compliance with international exposure guidelines as settling health questions, so health is very unlikely to be accepted as a reason to refuse. That's why objections should focus on appearance and heritage. It doesn't stop residents asking whether they'd want to sleep under it.</p>
+<h3>When you can have your say</h3>
+<p>No application has been lodged yet. When one is, the council will notify neighbours and invite comments, and the window can be short. We'll post the reference and how to object on this page.</p>
+</div>
+</div>
+</details>
+</div></section>
+
+<section id="demands" class="band" style="border-top:3px solid var(--rule)"><div class="wrap">
+<h2>We demand</h2>
+<div class="demand"><ol>
+<li><b>Full planning permission</b>, not a fast-track, so residents are heard and the conservation area is protected.</li>
+<li><b>This scheme, and any smaller version of it, rejected outright</b>, so Telent has to do a proper search for another site.</li>
+<li><b>Telent to explain to Barnes Court residents</b> why we were given misleading information.</li>
+</ol></div>
+</div></section>
+
+<section id="act" class="band" style="border-top:3px solid var(--rule)"><div class="wrap">
+<h2>What you can do</h2>
+<div id="choose" class="tabs" role="tablist" aria-label="Where do you live?">
+<a class="tab r" role="tab" id="tab-barnes-court" href="#barnes-court" aria-controls="barnes-court" aria-selected="true">I live in Barnes Court</a>
+<a class="tab g" role="tab" id="tab-neighbours" href="#neighbours" aria-controls="neighbours" aria-selected="false">I live nearby</a>
+</div>
+<div id="barnes-court" class="panel sec-r" role="tabpanel" aria-labelledby="tab-barnes-court">
+<div class="act" style="border-top:0"><h3>Stand up. Write today.</h3>
+<p><b>1. Tell Telent you object.</b> Email <a href="mailto:planning@telent.com?subject=Objection%20-%20Barnes%20Court%20site%20ref%2038887">planning@telent.com</a>, quoting site ref 38887.</p>
+<p><b>2. Tell the people who represent us.</b></p>
+<ul class="contacts" data-contacts></ul>
+<p class="note">Write in your own words: personal letters count for more than copies. Copy <b>barnsburyskyline@gmail.com</b> if you'd like updates.</p>
+</div>
+</div>
+<div id="neighbours" class="panel sec-g" role="tabpanel" aria-labelledby="tab-neighbours" hidden>
+<div class="act" style="border-top:0"><h3>Protect the conservation area.</h3>
+<p><b>Write to the people who represent us.</b></p>
+<ul class="contacts" data-contacts></ul>
+<p class="note">Use your own words. When the planning application is lodged, we'll post here how to object. Email <b>barnsburyskyline@gmail.com</b> to be told when.</p>
+</div>
+</div>
+</div></section>
+
+<section id="record" class="band" style="border-top:3px solid var(--rule)"><div class="wrap two">
+<div>
+<h2>Timeline</h2>
+<table class="stack">
+<thead><tr><th>Date</th><th>What happened</th></tr></thead>
+<tbody>
+<tr><td>27 Oct</td><td>Letter to residents: 14 days to comment, no drawings.</td></tr>
+<tr><td>13 Nov</td><td>A resident objects and asks for the plans. Telent sends the drawings, calls the scheme "permitted development" and says this is "not a formal consultation process".</td></tr>
+<tr><td>13 Nov</td><td>The resident records in writing that 30 sites were considered and the decision already made. Not disputed.</td></tr>
+<tr><td>14–24 Nov</td><td>Asked three times when the old site stopped working. Telent confirms it "has since been decommissioned", with no date.</td></tr>
+<tr><td>27 Nov</td><td>No planning application lodged, as far as we know.</td></tr>
+</tbody>
+</table>
+</div>
+<div>
+<h2>Documents</h2>
+<ul class="docs">
+<li><a href="38887-planning-drawings.pdf"><b>The operators' planning drawings</b></a> (5 sheets, PDF, 2.5MB). Supplied by Telent on 13 November. Staff names removed.</li>
+<li><a href="viewpoints-map.jpg"><b>Viewpoints map</b></a> (image). Our analysis of where the equipment would be seen from.</li>
+</ul>
+<p class="note">More to follow, including the 27 October letter.</p>
+</div>
+</div></section>
+
+<section id="about" class="band" style="border-top:3px solid var(--rule)"><div class="wrap">
+<h2>Who we are</h2>
+<p>Residents of Barnes Court and neighbours in Barnsbury. We're not a company or a political group. Contact: <b>barnsburyskyline@gmail.com</b></p>
+</div></section>
+
+<footer><div class="wrap">Barnsbury Skyline · Drawings reproduced from the operators' own documents for comment and criticism. Illustration is our own, based on those drawings.</div></footer>
+
+<script>
+{
+const people=[
+["Cllr Rowena Champion","rowena.champion@islington.gov.uk"],
+["Cllr Jilani Chowdhury","jilani.chowdhury@islington.gov.uk"],
+["Cllr Kane Emerson","kane.emerson@islington.gov.uk"],
+["Emily Thornberry MP","emily.thornberry.mp@parliament.uk"]];
+const html=people.map(([n,e])=>`<li><span>${n}</span><a href="mailto:${e}?subject=Barnes%20Court%20rooftop%20mast">${e}</a></li>`).join('');
+document.querySelectorAll('[data-contacts]').forEach(u=>u.innerHTML=html);
+const ids=["barnes-court","neighbours"];
+function show(id,scroll){if(!ids.includes(id))return;for(const k of ids){const p=document.getElementById(k);p.hidden=k!==id;document.getElementById("tab-"+k).setAttribute("aria-selected",String(k===id))}
+if(scroll)document.getElementById("choose").scrollIntoView({block:"start"})}
+document.querySelectorAll('a[href="#barnes-court"],a[href="#neighbours"]').forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const id=a.getAttribute("href").slice(1);try{history.replaceState(null,"","#"+id)}catch(_){}show(id,true)}));
+window.addEventListener("hashchange",()=>show(location.hash.slice(1),true));
+const h=location.hash.slice(1);if(ids.includes(h))show(h,true);
+
+new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true});
+for(const c of document.querySelectorAll('.stack td')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}
+}
+</script>
+</body>
+</html>
