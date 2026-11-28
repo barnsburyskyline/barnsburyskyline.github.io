@@ -41,8 +41,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .top{border-bottom:3px solid var(--rule)}
 .brand{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:16px;padding-bottom:16px;font-weight:700}
 .brand b{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:20px;text-transform:uppercase}
-.status{font-size:14px;color:var(--muted);text-align:right}
-@media (max-width:560px){.status{text-align:left}}
+.status{font-size:14px;color:var(--muted)}
 .hero{display:grid;grid-template-columns:minmax(0,0.7fr) minmax(0,1.3fr);gap:clamp(20px,3vw,40px);align-items:center}
 .hero img{width:100%;aspect-ratio:410/340;object-fit:cover;border:3px solid var(--rule);display:block}
 .cap{font-size:13px;color:var(--muted);margin-top:6px}
@@ -63,6 +62,9 @@ details.more[open]>summary::after{content:"\2212"}
 .body h3{margin:22px 0 8px;font-size:18px}
 .body ul{margin:0 0 1em;padding-left:1.2em;max-width:70ch}.body li{margin:6px 0}
 .intro{font-size:19px;font-weight:600;max-width:60ch}
+.key{list-style:none;padding:0;margin:0 0 8px;display:grid;gap:4px}.key li{margin:0;display:flex;align-items:center;gap:8px}.key i{flex:none;width:16px;height:12px;border:1px solid rgba(0,0,0,.35)}.key i.vp{width:16px;height:16px;border-radius:50%;background:#1d3a6b;color:#fff;font:700 10px/16px Inter,sans-serif;font-style:normal;text-align:center;border:0}
+.two .wide{grid-column:1/-1;order:-1;margin:0}
+.wide img{width:100%;height:auto;border:2px solid var(--rule);background:#fff;display:block}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,40px);align-items:start}
 figure{margin:0}
 figure img{width:100%;border:3px solid var(--rule);display:block;background:#fff}
@@ -100,7 +102,7 @@ footer{border-top:3px solid var(--rule);padding:24px 0 40px;font-size:14px;color
 </head>
 <body>
 
-<header class="top"><div class="wrap brand"><b>Barnsbury Skyline</b><span class="status">Updated 27 November 2026<br><button type="button" class="optout" id="optout">We count visits, nothing else. Opt out</button></span></div></header>
+<header class="top"><div class="wrap brand"><b>Barnsbury Skyline</b><span class="status">Updated 27 November 2026</span></div></header>
 
 <section class="band"><div class="wrap">
 <h1>A phone mast on the Barnsbury skyline?</h1>
@@ -128,7 +130,14 @@ footer{border-top:3px solid var(--rule);padding:24px 0 40px;font-size:14px;color
 <p>In the heart of the Barnsbury Conservation Area, among many listed and locally listed houses, and in direct view of Barnsbury Square: its gardens, its terraces and its unique heritage atmosphere.</p>
 <p>It would be seen from Barnsbury Square, Mountfort Terrace, Lofting Road, Brayfield Terrace and Thornhill Road: from some places all year round, from others when the trees are bare.</p>
 </div>
-<figure><img src="viewpoints-map.jpg" alt="Map of Barnes Court and Barnsbury Square showing the proposed antenna frames, listed and locally listed buildings, and numbered viewpoints with lines of sight"><figcaption class="cap">Where it would be seen from: our analysis of public height data, to be confirmed by photographs. Map © OpenStreetMap contributors; listed buildings from Historic England; locally listed buildings from Islington Council.</figcaption></figure>
+<figure class="wide"><img src="elevation.png" alt="The operators' elevation drawing of Barnes Court, with the proposed antenna frames, dishes, cabinets and railings in red on the roof, up to 18.8m above ground"><figcaption class="cap">Their own drawing: everything in red is new, rising 4.3m above the roof. M Group for EE and Three, issue A, 4 September 2026.</figcaption></figure>
+<figure><img src="viewpoints-map.jpg" alt="Map of Barnes Court and Barnsbury Square showing the proposed antenna frames, listed and locally listed buildings, and numbered viewpoints with lines of sight"><figcaption class="cap"><ul class="key">
+<li><i style="background:#3a4250"></i>Barnes Court</li>
+<li><i style="background:#d7261e"></i>Proposed antenna frames</li>
+<li><i style="background:#e8a08f"></i>Listed building, Grade II (Historic England)</li>
+<li><i style="background:#f2d98c"></i>Locally listed building (Islington Council)</li>
+<li><i class="vp">1</i>Viewpoint; the shaded wedge shows the direction of view</li>
+</ul>Where it would be seen from: our analysis of public height data, to be confirmed by photographs. Map © OpenStreetMap contributors.</figcaption></figure>
 </div>
 </details>
 
@@ -264,25 +273,12 @@ footer{border-top:3px solid var(--rule);padding:24px 0 40px;font-size:14px;color
 </div>
 </div></section>
 
-<section id="record" class="band ruled"><div class="wrap two">
-<div>
-<h2>Timeline</h2>
-<table class="stack">
-<thead><tr><th>Date</th><th>What happened</th></tr></thead>
-<tbody>
-<tr><td>27 Oct</td><td>Letter to residents: 14 days to comment, no drawings.</td></tr>
-<tr><td>13 Nov</td><td>A resident objects and asks for the plans. Telent sends the drawings, calls the scheme "permitted development" and says this is "not a formal consultation process".</td></tr>
-<tr><td>13 Nov</td><td>The resident records in writing that the decision to apply had already been made. Not disputed.</td></tr>
-<tr><td>14–24 Nov</td><td>Asked three times when the old site stopped working. Telent confirms it "has since been decommissioned", with no date.</td></tr>
-<tr><td>27 Nov</td><td>No planning application lodged, as far as we know.</td></tr>
-</tbody>
-</table>
-</div>
+<section id="record" class="band ruled"><div class="wrap">
 <div>
 <h2>Documents</h2>
 <ul class="docs">
-<li><a href="27-october-letter.pdf" data-doc="letter"><b>The letter to residents</b></a>, 27 October (2 pages, PDF). Recipient's address removed.</li>
-<li><a href="38887-planning-drawings.pdf" data-doc="drawings"><b>The operators' planning drawings</b></a> (5 sheets, PDF, 2.5MB). Supplied by Telent on 13 November. Staff names removed.</li>
+<li><a href="27-october-letter.pdf" data-doc="letter"><b>The letter to residents</b></a>, 27 October (2 pages, PDF).</li>
+<li><a href="38887-planning-drawings.pdf" data-doc="drawings"><b>The operators' planning drawings</b></a> (5 sheets, PDF, 2.5MB). Supplied by Telent on 13 November.</li>
 <li><a href="viewpoints-map.jpg" data-doc="viewpoints_map"><b>Viewpoints map</b></a> (image). Our analysis of where the equipment would be seen from.</li>
 </ul>
 </div>
@@ -294,7 +290,7 @@ footer{border-top:3px solid var(--rule);padding:24px 0 40px;font-size:14px;color
 <p><b>barnsburyskyline@gmail.com</b></p>
 </div></section>
 
-<footer><div class="wrap">Barnsbury Skyline · Drawings and letter reproduced from the operators' own documents for comment and criticism. Rendering is our own, based on those drawings. Aerial imagery: Google Earth.</div></footer>
+<footer><div class="wrap">Barnsbury Skyline · Drawings and letter reproduced from the operators' own documents for comment and criticism. Rendering is our own, based on those drawings. Aerial imagery: Google Earth.<br><button type="button" class="optout" id="optout">We count visits, nothing else. Opt out</button></div></footer>
 
 <script>
 {
@@ -309,10 +305,10 @@ document.querySelectorAll('[data-contacts]').forEach(u=>u.innerHTML=html);
 
 const ids=["barnes-court","neighbours"];
 function show(id,scroll){if(!ids.includes(id))return;for(const k of ids){document.getElementById(k).hidden=k!==id;document.getElementById("tab-"+k).setAttribute("aria-selected",String(k===id))}
-if(scroll)document.getElementById("choose").scrollIntoView({block:"start"})}
+if(scroll)requestAnimationFrame(()=>document.getElementById("act").scrollIntoView({block:"start"}))}
 document.querySelectorAll('a[href="#barnes-court"],a[href="#neighbours"]').forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const id=a.getAttribute("href").slice(1);try{history.replaceState(null,"","#"+id)}catch(_){}show(id,true);ev('tab_select',{tab:id})}));
 window.addEventListener("hashchange",()=>show(location.hash.slice(1),true));
-const h=location.hash.slice(1);if(ids.includes(h)){show(h,true);ev('qr_landing',{tab:h})}
+const h=location.hash.slice(1);if(ids.includes(h)){show(h,false);window.addEventListener('load',()=>setTimeout(()=>document.getElementById('act').scrollIntoView({block:'start'}),50));ev('qr_landing',{tab:h})}
 
 document.querySelectorAll('details.more').forEach(d=>d.addEventListener('toggle',()=>ev(d.open?'section_open':'section_close',{section:d.id})));
 document.addEventListener('click',e=>{
